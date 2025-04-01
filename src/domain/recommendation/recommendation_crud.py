@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from domain.recommendation.schema import UserInfo, PolicyRecommendation
-from models import SupportPolicy, User, UserRecommendation
+from src.domain.recommendation.recommendation_schema import UserInfo, PolicyRecommendation
+from src.models import SupportPolicy, User, UserRecommendation
 from datetime import datetime
 
 def get_or_create_user(db: Session, user_info: UserInfo) -> User:
@@ -29,14 +29,14 @@ def recommend_support_policies(user_info: UserInfo, db: Session):
     user = get_or_create_user(db, user_info)
 
     query = f"""
-    ÃßÃµ Áö¿ø±İ ¿äÃ»:
-    - ³ªÀÌ: {user_info.age}
-    - ¼Òµæ: {user_info.income}
-    - Áö¿ª: {user_info.region}
-    - ¾÷Á¾: {user_info.industry}
-    - À¯Çü: {user_info.user_type}
+    ì¶”ì²œ ì§€ì›ê¸ˆ ìš”ì²­:
+    - ë‚˜ì´: {user_info.age}
+    - ì†Œë“: {user_info.income}
+    - ì§€ì—­: {user_info.region}
+    - ì—…ì¢…: {user_info.industry}
+    - ìœ í˜•: {user_info.user_type}
     """
-    recommended_titles = db.get(SupportPolicy, 1).title # ³ªÁß¿¡ ¼öÁ¤ÇØ¾ßµÊ
+    recommended_titles = db.get(SupportPolicy, 1).title # ë‚˜ì¤‘ì— ìˆ˜ì •í•´ì•¼ë¨
 
     recommended_policies = db.query(SupportPolicy).filter(
         SupportPolicy.title.in_(recommended_titles)
@@ -44,7 +44,7 @@ def recommend_support_policies(user_info: UserInfo, db: Session):
 
     recommendations = []
     for policy in recommended_policies:
-        # ÃßÃµ ±â·Ï ÀúÀå
+        # ì¶”ì²œ ê¸°ë¡ ì €ì¥
         user_recommendation = UserRecommendation(
             user_id=user.id,
             policy_id=policy.id,

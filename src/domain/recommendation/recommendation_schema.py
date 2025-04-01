@@ -7,7 +7,7 @@ class UserInfo(BaseModel):
     income: int
     region: str
     industry: str
-    user_type: str  # ¿¹: Ã»³â, ½ÅÈ¥ºÎºÎ, ¼Ò»ó°øÀÎ µî
+    user_type: str  # ì˜ˆ: ì²­ë…„, ì‹ í˜¼ë¶€ë¶€, ì†Œìƒê³µì¸ ë“±
 
 class PolicyRecommendation(BaseModel):
     policy_id: int

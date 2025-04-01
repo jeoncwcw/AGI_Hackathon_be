@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-from database import Base
+from src.database import Base
 
 
 class User(Base):
@@ -35,7 +35,7 @@ class SupportPolicy(Base):
     eligibility_criteria = Column(Text, nullable=False)
     application_process = Column(Text, nullable=False)
     benefits = Column(Text, nullable=False)
-    policy_type = Column(String, nullable=False)  
+    policy_type = Column(String, nullable=False) 
     region = Column(String, nullable=False)  
 
 
