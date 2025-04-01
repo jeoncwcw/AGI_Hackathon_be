@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models import SupportPolicy
-from domain.policy.policy_schema import PolicyCreate
+from src.models import SupportPolicy
+from src.domain.policy.policy_schema import PolicyCreate
 
 # 모든 지원금 조회
 def get_policies(db: Session, skip: int = 0, limit: int = 100):
