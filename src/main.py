@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from src.domain.recommendation import recommendation_router
+from src.domain.policy import policy_router
 
 app = FastAPI(
     title="AGI_Hackathon API",
@@ -9,6 +10,7 @@ app = FastAPI(
 
 @app.get("/hello")
 def hello():
-    return{"message": "안녕하세요 AGI_Hackathon에 오신 것을 환영합니다!"}
+    return{"message": "This is AGI_Hackathon API"}
 
 app.include_router(recommendation_router.router)
+app.include_router(policy_router.router)
