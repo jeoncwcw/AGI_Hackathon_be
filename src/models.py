@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime
+from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -17,7 +17,7 @@ class Response(Base):
     id = Column(Integer, primary_key=True)
     content = Column(Text, nullable=False)
     create_date = Column(DateTime, nullable=False)
-    request_id = Column(Integer, nullable=False)
+    request_id = Column(Integer, ForeignKey("request.id"))
     request = relationship("Request", backref="response")
     
 class SupportPolicy(Base):
